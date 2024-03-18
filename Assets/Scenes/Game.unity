@@ -1564,9 +1564,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1193806503}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: MenuButton
+      - m_Target: {fileID: 1193806505}
+        m_TargetAssemblyTypeName: TimerScript, Assembly-CSharp
+        m_MethodName: OpenMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3220,6 +3220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193806504}
   - component: {fileID: 1193806503}
+  - component: {fileID: 1193806505}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -3254,6 +3255,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193806505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193806502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50d7e610baef1840a1a6fb0afb6df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1265558724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,20 +4416,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50d7e610baef1840a1a6fb0afb6df14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer13: {fileID: 0}
-  timer12: {fileID: 0}
-  timer11: {fileID: 0}
-  timer10: {fileID: 0}
-  timer9: {fileID: 0}
-  timer8: {fileID: 0}
-  timer7: {fileID: 0}
-  timer6: {fileID: 0}
-  timer5: {fileID: 0}
-  timer4: {fileID: 0}
-  timer3: {fileID: 0}
-  timer2: {fileID: 0}
-  timer1: {fileID: 0}
-  timer0: {fileID: 0}
+  timer:
+  - {fileID: 1138062289}
+  - {fileID: 1937561180}
+  - {fileID: 1461509394}
+  - {fileID: 1348894829}
+  - {fileID: 952445515}
+  - {fileID: 756995385}
+  - {fileID: 484141509}
+  - {fileID: 2019223515}
+  - {fileID: 1776033257}
+  - {fileID: 850438902}
+  - {fileID: 1977776164}
+  - {fileID: 1521040764}
+  - {fileID: 1402159253}
+  - {fileID: 1690543883}
 --- !u!1 &1666698576
 GameObject:
   m_ObjectHideFlags: 0

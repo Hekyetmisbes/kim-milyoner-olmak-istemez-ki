@@ -1,56 +1,90 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject timer13;
-    [SerializeField]
-    GameObject timer12;
-    [SerializeField]
-    GameObject timer11;
-    [SerializeField]
-    GameObject timer10;
-    [SerializeField]
-    GameObject timer9;
-    [SerializeField]
-    GameObject timer8;
-    [SerializeField]
-    GameObject timer7;
-    [SerializeField]
-    GameObject timer6;
-    [SerializeField]
-    GameObject timer5;
-    [SerializeField]
-    GameObject timer4;
-    [SerializeField]
-    GameObject timer3;
-    [SerializeField]
-    GameObject timer2;
-    [SerializeField]
-    GameObject timer1;
-    [SerializeField]
-    GameObject timer0;
+    GameObject[] timer = new GameObject[14];
 
+    private MenuScript menuScript;
 
-    private float startTime;
+    private float lastSecond = 0f;
+    private bool isTimerActive = false; // Baþlangýçta timer pasif olsun
+    private float currentTimeStart = 0;
+    private float currentTime = 0;
+    private int currentSecond;
+
+    private bool isMenuOpen;
+
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+        isMenuOpen = false;
+        // Timer'ý baþlatmak için burada deðil, baþlangýçta menü aktif olduðu için Start fonksiyonunu kullanmýyoruz
     }
 
     // Update is called once per frame
     void Update()
     {
-        startTime = Time.time;
-        int i = (int)startTime;
-        if (startTime == i)
+        // Menü açýk deðilse timer çalýþsýn
+        if (!isMenuOpen)
         {
-            GameObject.Find("timer" + i).GetComponent<Image>().Equals("Bos");
+            currentTimeStart = Time.time;
+            if (currentTimeStart > 1)
+            {
+                if (isTimerActive)
+                {
+                    currentTime = Time.time;
+                    currentSecond = Mathf.FloorToInt(currentTime); // Geçen zamaný tam sayýya yuvarla
+
+                    // Eðer geçen saniye son saniyeden farklýysa, bir saniye geçmiþtir
+                    if (currentSecond != lastSecond)
+                    {
+                        lastSecond = currentSecond; // Son saniyeyi güncelle
+
+                        // Her saniye bir timer nesnesini devre dýþý býrak
+                        for (int j = 0; j < 14; j++)
+                        {
+                            timer[currentSecond - 1].SetActive(false);
+                        }
+                    }
+
+                    Debug.Log(currentSecond); // Güncel saniyeyi logla
+
+                    // Eðer geçen saniye 14 ise, oyunu bitir
+                    if (currentSecond == 14)
+                    {
+                        isTimerActive = false;
+                        currentTimeStart = 0;
+                        currentSecond = 0;
+                        currentTime = 0;
+                        Debug.Log("Oyun bitti");
+                    }
+                }
+            }
         }
-        Debug.Log(((int)startTime));
+    }
+
+    // Menüyü açýk duruma getir
+    public void OpenMenu()
+    {
+        isMenuOpen = true;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    // Timer'ý sýfýrla
+    public void ResetTimer()
+    {
+        // Timer'ý baþlat
+        isTimerActive = true;
+        currentTimeStart = Time.time;
+        currentTime = Time.time;
+        currentSecond = 0;
+
+        // Tüm timer'larý aktif hale getir
+        foreach (GameObject obj in timer)
+        {
+            obj.SetActive(true);
+        }
     }
 }
